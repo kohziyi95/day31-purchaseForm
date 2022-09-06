@@ -1,0 +1,38 @@
+<h1>Item</h1>
+
+<form [formGroup]="itemForm">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" size="30" formControlName="name" /></td>
+    </tr>
+    <tr>
+      <td>Unit Price:</td>
+      <td><input type="number" formControlName="price"/></td>
+    </tr>
+    <tr>
+      <td>Quantity:</td>
+      <td>
+        <select
+          formControlName="quantity"
+        >
+          <option *ngFor="let n of numSequence(10); let i = index" value="{{ i+1 }}">{{ i+1 }}</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <button
+          type="submit"
+          (click)="processForm()"
+          [disabled]="itemForm.invalid"
+        >
+          Add
+        </button>
+      </td>
+    </tr>
+
+  </table>
+</form>
